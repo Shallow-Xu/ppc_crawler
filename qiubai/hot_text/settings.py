@@ -64,6 +64,6 @@ AUTOTHROTTLE_START_DELAY = 5
 MYSQL_HOST = '127.0.0.1'
 MYSQL_DBNAME = 'ppc'  # 数据库名字，请修改
 MYSQL_USER = 'root'  # 数据库账号，请修改
-MYSQL_PASSWD = ''  # 数据库密码，请修改
+MYSQL_PASSWD = '123456'  # 数据库密码，请修改
 
 MYSQL_PORT = 3306  # 数据库端口，在dbhelper中使用
