@@ -3,9 +3,9 @@
 import codecs
 import datetime
 import json
+import pymysql.cursors
 
-import MySQLdb
-import MySQLdb.cursors
+
 # Define your item pipelines here
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
@@ -37,15 +37,6 @@ class WebcrawlerScrapyPipeline(object):
 
     def __init__(self, dbpool):
         self.dbpool = dbpool
-        ''' 这里注释中采用写死在代码中的方式连接线程池，可以从settings配置文件中读取，更加灵活
-            self.dbpool=adbapi.ConnectionPool('MySQLdb',
-                                          host='127.0.0.1',
-                                          db='crawlpicturesdb',
-                                          user='root',
-                                          passwd='123456',
-                                          cursorclass=MySQLdb.cursors.DictCursor,
-                                          charset='utf8',
-                                          use_unicode=False)'''
 
     @classmethod
     def from_settings(cls, settings):
@@ -58,10 +49,10 @@ class WebcrawlerScrapyPipeline(object):
             user=settings['MYSQL_USER'],
             passwd=settings['MYSQL_PASSWD'],
             charset='utf8',  # 编码要加上，否则可能出现中文乱码问题
-            cursorclass=MySQLdb.cursors.DictCursor,
+            cursorclass=pymysql.cursors.DictCursor,
             use_unicode=False,
         )
-        dbpool = adbapi.ConnectionPool('MySQLdb', **dbparams)  # **表示将字典扩展为关键字参数,相当于host=xxx,db=yyy....
+        dbpool = adbapi.ConnectionPool('pymysql', **dbparams)  # **表示将字典扩展为关键字参数,相当于host=xxx,db=yyy....
         return cls(dbpool)  # 相当于dbpool付给了这个类，self中可以得到
 
     # pipeline默认调用
