@@ -4,7 +4,7 @@ from qiubai.hot_text.items import WebcrawlerScrapyItem
 
 
 class SpiderTxt(scrapy.Spider):
-    name = "qiubai"  # 定义爬虫名，要和settings中的BOT_NAME属性对应的值一致
+    name = "hot_text"  # 定义爬虫名，要和settings中的BOT_NAME属性对应的值一致
     allowed_domains = ["qiushibaike.com"]
     start_urls = ["https://www.qiushibaike.com/text/",
                   "https://www.qiushibaike.com/text/page/2/",

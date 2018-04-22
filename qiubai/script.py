@@ -29,7 +29,7 @@ def run_csbk():
     })
     runner = CrawlerRunner(settings)
 
-    d = runner.crawl('qiubai')
+    d = runner.crawl('hot_text')
     d.addBoth(lambda _: reactor.stop())
     reactor.run()
     return 0
